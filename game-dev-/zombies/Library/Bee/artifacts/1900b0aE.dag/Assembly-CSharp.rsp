@@ -106,8 +106,10 @@
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
 -define:ENABLE_LEGACY_INPUT_MANAGER
+-define:DOTWEEN
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Plugins/Demigiant/DOTween/DOTween.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.1.13f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.1.13f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.1.13f1/Editor/Data/Managed/UnityEngine/UnityEditor.dll"
@@ -361,14 +363,19 @@
 "Assets/_Scripts/AgentController.cs"
 "Assets/_Scripts/FuelItem.cs"
 "Assets/_Scripts/GameOverMenu.cs"
+"Assets/_Scripts/GraphicsSettings.cs"
 "Assets/_Scripts/GunScript.cs"
 "Assets/_Scripts/MainMenu.cs"
 "Assets/_Scripts/NewBehaviourScript.cs"
+"Assets/_Scripts/NewBehaviourScript1.cs"
 "Assets/_Scripts/PauseMenu.cs"
 "Assets/_Scripts/PlayerManager.cs"
-"Assets/_Scripts/SceneManager.cs"
+"Assets/_Scripts/RagdollController.cs"
+"Assets/_Scripts/SaveandReload.cs"
 "Assets/_Scripts/ScoreManager.cs"
+"Assets/_Scripts/VolumeController.cs"
 "Assets/_Scripts/WinTrigger.cs"
+"Assets/_Scripts/WinTrigger2.cs"
 "Assets/_Scripts/ZombieHealth.cs"
 "Assets/_Scripts/ZombieSpawner.cs"
 -langversion:8.0

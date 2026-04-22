@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ZombieSpawner : MonoBehaviour {
     public GameObject zombiePrefab; 
-    public float spawnRate = 0.2f;  
-    public int maxZombies = 70;     
+    public float spawnRate = 1f;  
+    public int maxZombies = 50;     
     public float spawnRadius = 5f; 
     
     private int currentZombies = 0;

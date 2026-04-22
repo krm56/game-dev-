@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<GameState xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <sceneIndex>1</sceneIndex>
+  <currentScore>55</currentScore>
+  <playerState>
+    <position>
+      <x>606.735535</x>
+      <y>21.9799957</y>
+      <z>572.3138</z>
+    </position>
+    <hp>60</hp>
+    <fuel>3</fuel>
+  </playerState>
+  <zombieStates>
+    <ZombieRecord>
+      <position>
+        <x>610.295166</x>
+        <y>22.1619053</y>
+        <z>566.94635</z>
+      </position>
+      <zombieType>0</zombieType>
+    </ZombieRecord>
+  </zombieStates>
+</GameState>

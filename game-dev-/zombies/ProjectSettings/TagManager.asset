@@ -9,6 +9,8 @@ TagManager:
   - Items
   - Zombie
   - MainMenu
+  - PatrolZombie
+  - Waypoint
   layers:
   - Default
   - TransparentFX

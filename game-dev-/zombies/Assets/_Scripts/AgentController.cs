@@ -23,8 +23,10 @@ public class AgentController : MonoBehaviour
     private int attackTriggerId; 
     private int currentWaypoint = 0;
     private float oldRemainingDistance = float.PositiveInfinity;
+    private ZombieHealth hp;
 
     void Awake() {
+        hp = GetComponent<ZombieHealth>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         animController = GetComponent<Animator>();
         
@@ -36,6 +38,13 @@ public class AgentController : MonoBehaviour
     }
 
     void Update() {
+
+
+        if (hp != null && hp.health <= 0) {
+            if (navMeshAgent.enabled) navMeshAgent.isStopped = true;
+            return; 
+    }
+        
         if (Time.timeScale == 0) {
             navMeshAgent.isStopped = true;
             return;
@@ -51,7 +60,7 @@ public class AgentController : MonoBehaviour
             state = AgentState.Idle;
         }
 
-        // Execute States
+        
         switch (state) {
             case AgentState.Chasing: Chase(); break;
             case AgentState.Patrolling: Patrol(); break;

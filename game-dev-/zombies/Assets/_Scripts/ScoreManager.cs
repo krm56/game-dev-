@@ -11,12 +11,11 @@ public class ScoreManager : MonoBehaviour
 
     void Start() {
         
-        scoreValue = 0; 
+        UpdateScoreUI();
         UpdateHighScoreDisplay();
     }
 
     void Update() {
-        
         if (scoreValue != lastKnownScore) {
             UpdateScoreUI();
             CheckHighScore();
@@ -24,7 +23,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    void UpdateScoreUI() {
+    public void UpdateScoreUI() {
         if (scoreDisplay != null) {
             scoreDisplay.text = "Score: " + scoreValue;
         }
@@ -43,5 +42,9 @@ public class ScoreManager : MonoBehaviour
         if (highScoreDisplay != null) {
             highScoreDisplay.text = "High Score: " + PlayerPrefs.GetInt("HighScore", 0);
         }
+    }
+
+    public static void ResetScore() {
+        scoreValue = 0;
     }
 }

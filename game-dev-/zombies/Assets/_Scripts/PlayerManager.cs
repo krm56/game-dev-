@@ -2,78 +2,88 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+
 namespace UnityStandardAssets.Characters.FirstPerson
 {
-public class PlayerManager : MonoBehaviour 
-{
-    [Header("UI Links")]
-    public Slider healthBar;
-    public Slider sprintBar;
-    public TextMeshProUGUI fuelText;
+    public class PlayerManager : MonoBehaviour 
+    {
+        [Header("Audio Settings")]
+        public AudioSource playerAS;   
+        public AudioClip screamClip; 
+        public AudioClip fuelClip;     
 
-    [Header("Stats")]
-    public float hp = 100f;
-    public float energy = 100f;
-    public int fuelCount = 0;
+        [Header("UI Links")]
+        public Slider healthBar;
+        public Slider sprintBar;
+        public TextMeshProUGUI fuelText;
 
-    [Header("Movement Settings")]
-    public float walkSpeed = 5f;
-    public float sprintSpeed = 10f;
-    private float currentSpeed;
+        [Header("Stats")]
+        public float hp = 100f;
+        public float energy = 100f;
+        public int fuelCount = 0;
 
-    void Start() {
-        currentSpeed = walkSpeed;
-        
-        fuelText.text = "Fuel: 0/3";
-    }
+        [Header("Movement Settings")]
+        public float walkSpeed = 5f;
+        public float sprintSpeed = 10f;
+        private float currentSpeed;
 
-    void Update() {
-
-        if (PauseMenu.isPaused) return;
-       
-        if (Input.GetKey(KeyCode.LeftShift) && energy > 0) {
-            energy -= 25f * Time.deltaTime; 
-            currentSpeed = sprintSpeed;
-        } else {
-            energy += 15f * Time.deltaTime; 
+        void Start() {
             currentSpeed = walkSpeed;
+            fuelText.text = "Fuel: 0/3";
         }
 
-        energy = Mathf.Clamp(energy, 0, 100);
-        sprintBar.value = energy;
-
-        ApplySpeedToController();
-
-      
-        if (fuelCount >= 3) {
+        void Update() {
+            if (PauseMenu.isPaused) return;
            
+            if (Input.GetKey(KeyCode.LeftShift) && energy > 0) {
+                energy -= 25f * Time.deltaTime; 
+                currentSpeed = sprintSpeed;
+            } else {
+                energy += 15f * Time.deltaTime; 
+                currentSpeed = walkSpeed;
+            }
+
+            energy = Mathf.Clamp(energy, 0, 100);
+            sprintBar.value = energy;
+
+            ApplySpeedToController();
         }
-    }
 
-    void ApplySpeedToController() {
-    }
+        void ApplySpeedToController() {
+         
+        }
 
-    public void TakeDamage(float amount) {
-         hp -= amount;
-         healthBar.value = hp;
+        public void TakeDamage(float amount) {
+             hp -= amount;
+             healthBar.value = hp;
+             
+            
+             if (playerAS != null && screamClip != null) {
+                 playerAS.PlayOneShot(screamClip);
+             }
 
-    
-        if (hp <= 0) {
-     
-           Cursor.lockState = CursorLockMode.None;
-           Cursor.visible = true;
-        
-        
-           SceneManager.LoadScene("GameOver"); 
-    }
-}
+            if (hp <= 0) {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                SceneManager.LoadScene("GameOver"); 
+            }
+        }
 
-    
-    public void PickUpFuel() {
-        fuelCount++;
-        fuelText.text = "Fuel: " + fuelCount + "/3";
-        
-        Debug.Log("Fuel Collected! Total: " + fuelCount);
+        public void PickUpFuel() {
+            fuelCount++;
+            UpdateFuelUI();
+            
+            if (playerAS != null && fuelClip != null) {
+                playerAS.PlayOneShot(fuelClip);
+            }
+            
+            Debug.Log("Fuel Collected! Total: " + fuelCount);
+        }
+
+        public void UpdateFuelUI() {
+            if (fuelText != null) {
+                fuelText.text = "Fuel: " + fuelCount + "/3";
+            }
+        } 
     }
-}
 }

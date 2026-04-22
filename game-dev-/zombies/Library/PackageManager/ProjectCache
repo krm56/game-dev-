@@ -133,6 +133,7 @@ m_ResolvedPackages:
     - 2.11.2
     - 2.11.3
     - 2.11.4
+    - 2.12.4
     compatible:
     - 1.5.7
     - 1.6.0
@@ -303,6 +304,7 @@ m_ResolvedPackages:
     - 3.0.37
     - 3.0.38
     - 3.0.39
+    - 3.0.40
     compatible:
     - 3.0.7
     - 3.0.9
@@ -971,6 +973,7 @@ m_ResolvedPackages:
     - 1.8.9
     - 1.8.10
     - 1.8.11
+    - 1.8.12
     compatible:
     - 1.5.5
     - 1.5.6
@@ -1171,6 +1174,7 @@ m_ResolvedPackages:
     - 1.9.8
     - 1.9.9
     - 1.9.10
+    - 1.9.11
     compatible:
     - 1.6.1
     - 1.7.1
